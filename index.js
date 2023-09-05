@@ -24,9 +24,9 @@ app.use("/api", todoRoutes);
 connectDB()
 
 //DB Connection
-// mongoose.connect("mongodb://127.0.0.1/todoapp").then(() => {
-//   console.log("CONNECTED TO DB");
-// });
+mongoose.connect("mongodb://127.0.0.1/todoapp").then(() => {
+  console.log("CONNECTED TO DB");
+});
 
 app.get("/", (_, res) => {
   res.send("Main page");
