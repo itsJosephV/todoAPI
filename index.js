@@ -1,24 +1,16 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-// const mongoose = require("mongoose");
 require("dotenv").config();
 const connectDB = require('./connectMongo')
 
-// console.log(process.env.PORT)
-
-// we using port 8000
-
 const port = process.env.PORT || 8000;
-
 const todoRoutes = require("./routes/Todo");
-
 const app = express();
 
-// middleware for cors to allow cross origin resource sharing
-app.use(cors());
-// middleware to convert our request data into JSON
-app.use(bodyParser.json());
+
+app.use(cors());  //* Middleware for cors to allow cross origin resource sharing
+app.use(bodyParser.json());  //* middleware to convert our request data into JSON
 app.use("/api", todoRoutes);
 
 connectDB()

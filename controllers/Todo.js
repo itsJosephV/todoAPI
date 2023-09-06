@@ -1,8 +1,10 @@
 const Todo = require("../models/Todo.js");
 
+//todo ADD CATCH ERRORS
+
 exports.getTodoById = (req, res, next, todoId) => {
-  // todoId is coming from the router.param
-  // .findById() method will find the todo which has id == todoId
+  //* todoId is coming from the router.param
+  //* .findById() method will find the todo which has id == todoId
 
   Todo.findById(todoId).then((todo) => {
     if (!todo) {
@@ -10,10 +12,10 @@ exports.getTodoById = (req, res, next, todoId) => {
         error: "Todo not found",
       });
     }
-    // store that todo in req.todo so that other functions can use it
+    //* store that todo in req.todo so that other functions can use it
     req.todo = todo;
-    // Because this is a middleware we have to call the next()
-    // which will pass the control to the next function in the middleware stack
+    //* Because this is a middleware we have to call the next()
+    //* which will pass the control to the next function in the middleware stack
     next();
   });
   // .catch((err) => {
