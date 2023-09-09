@@ -74,6 +74,27 @@ exports.updateTodo = (req, res) => {
   // });
 };
 
+exports.updateTodos = async (req, res) => {
+  try {
+    const updatedTodos = req.body.updatedTodos; // Assuming the client sends an array of todos with updated positions
+
+    // Assuming updatedTodos is an array of todos with updated positions
+    // Iterate through the updatedTodos and update the positions in the database
+    for (const updatedTodo of updatedTodos) {
+      const todoId = updatedTodo.id; // Assuming each updatedTodo has an 'id' field
+
+      // Find the todo by its ID and update its position
+      await Todo.findByIdAndUpdate(todoId, { position: updatedTodo.position });
+    }
+
+    // Send a success response
+    res.json({ message: 'Todo positions updated successfully' });
+  } catch (error) {
+    // Handle errors and send an error response if necessary
+    console.error('Error updating todo positions:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 exports.deleteTodo = (req, res) => {
   const todo = req.todo;
   todo.deleteOne().then((task) => {
