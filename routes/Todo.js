@@ -10,7 +10,6 @@ const {
   deleteTodo,
   getAllTodos,
   updateTodo,
-  updateTodos,
 } = require("../controllers/Todo");
 
 router.param("todoId", getTodoById);
@@ -22,8 +21,6 @@ router.get("/todo/:todoId", getTodo);
 router.post("/todo/create/", createTodo);
 
 router.put("/todo/:todoId/update", updateTodo);
-
-router.put("/update-all", updateTodos);
 
 router.delete("/todo/:todoId/delete", deleteTodo);
 
