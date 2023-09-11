@@ -4,11 +4,14 @@ const Todo = new mongoose.Schema(
   {
     task: {
       type: String,
-      completed: false,
       required: true,
       trim: true,
       maxLength: 30,
     },
+    completed: {
+      type: Boolean,
+      default: false
+    }
   },
   { timestamps: true }
 );
