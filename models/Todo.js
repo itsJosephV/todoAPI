@@ -4,6 +4,7 @@ const Todo = new mongoose.Schema(
   {
     task: {
       type: String,
+      completed: false,
       required: true,
       trim: true,
       maxLength: 30,
