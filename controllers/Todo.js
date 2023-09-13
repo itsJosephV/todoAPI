@@ -62,8 +62,7 @@ exports.createTodo = (req, res) => {
 
 exports.updateTodo = (req, res) => {
   const todo = req.todo;
-  const trimmedTask = req.body.task.trim()
-  todo.task = trimmedTask
+  todo.task = req.body.task;
 
   todo.save().then((task) => {
     res.json(task);
