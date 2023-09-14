@@ -63,6 +63,7 @@ exports.createTodo = (req, res) => {
 exports.updateTodo = (req, res) => {
   const todo = req.todo;
   todo.task = req.body.task;
+  todo.completed = req.body.completed
 
   todo.save().then((task) => {
     res.json(task);
